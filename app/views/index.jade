@@ -1,0 +1,19 @@
+doctype html
+html(lang='en')
+head
+    meta(charset='UTF-8')
+    title Support - Spaceship Samurai
+    link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')
+    link(rel='stylesheet', href='http://netdna.bootstrapcdn.com/bootswatch/3.1.1/slate/bootstrap.min.css')
+    link(rel='stylesheet', href='/css/site.css')
+body(ng-app='app')
+    .navbar.navbar-fixed-top.nav-top
+        .container
+            .navbar-header
+                a.navbar-brand(href='/') Spaceship Samurai
+    .container(style='margin-top: 40px;')
+        .row
+            h1 Samurai Auctions
+        .row
+            div.col-md-12(ng-view)
+    include scripts
