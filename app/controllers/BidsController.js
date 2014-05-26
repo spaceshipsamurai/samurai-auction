@@ -48,5 +48,20 @@ exports.placeBid = function(req, res) {
 
 
     });
-
 };
+
+exports.getBids = function(req, res)
+{
+    Auction.findOne({_id: req.params.auction }, function(err, item) {
+
+        if(err)
+        {
+            console.log(err);
+            res.status(400);
+            return res.end();
+        }
+
+        return res.send(item.previousBids);
+
+    });
+}

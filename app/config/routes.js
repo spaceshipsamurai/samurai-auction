@@ -15,7 +15,9 @@ module.exports = function(app) {
 
     app.get('/api/auctions', auctionsController.getAuctions);
     app.post('/api/auctions', auth.validateIP, auctionsController.createAuction);
+    app.get('/api/auctions/:auction', auctionsController.getAuction);
     app.post('/api/auctions/:auction/bids', bidsController.placeBid);
+    app.get('/api/auctions/:auction/bids', bidsController.getBids);
     app.get('/api/auctions/:auction/reset', auth.validateIP,auctionsController.reset);
     app.delete('/api/auctions/:auction', auth.validateIP, auctionsController.delete);
 

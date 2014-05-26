@@ -16,11 +16,12 @@ div.row(ng-repeat="auction in auctions")
         .panel.panel-default
             .panel-heading
                 h3.panel-title.pull-left {{ auction.name }}
-                a(href='#').pull-right View History
+                a(ng-href='/auctions/{{auction._id}}/history').pull-right View History
                 div(style="clear: both")
             .panel-body
                 .row
-                    img(src="http://placehold.it/100x100" ng-if="!auction.imageUrl").img-rounded.col-md-3
+                    img(src="http://placehold.it/100x100" ng-if="!auction.imageUri").img-rounded.col-md-3
+                    img(src="{{auction.imageUri}}" ng-if="auction.imageUri").img-rounded.col-md-3
                     div.col-md-9
                         | Type: {{ auction.type }} </br>
                         | Current Bidder: {{ auction.currentBid.character }} <br/>

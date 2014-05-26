@@ -6,6 +6,18 @@ exports.getAuctions = function(req, res) {
     })
 };
 
+exports.getAuction = function(req, res) {
+    Auction.findOne({ _id: req.params.auction }, function(err, auction) {
+        if(err)
+        {
+            res.status(400);
+            return res.end();
+        }
+
+        return res.send(auction);
+    });
+}
+
 exports.createAuction = function(req, res) {
 
     var auctionData = req.body;

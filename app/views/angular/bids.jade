@@ -1,0 +1,34 @@
+a.pull-right(ng-href="/", style="margin-bottom: 10px") Back to Auctions
+.panel.panel-default(style="clear:both")
+    .panel-heading
+        h3.panel-title.pull-left {{ auction.name }}
+        div(style="clear: both")
+    .panel-body
+        .row
+            img(src="http://placehold.it/100x100" ng-if="!auction.imageUri").img-rounded.col-md-2
+            img(src="{{auction.imageUri}}" ng-if="auction.imageUri").img-rounded.col-md-2
+            div.col-md-10
+                | Type: {{ auction.type }} </br>
+                | Current Bidder: {{ auction.currentBid.character }} <br/>
+                | Current Amount: {{ auction.currentBid.amount }}
+                form(role="form" style="margin-top: 10px;" ng-show="hasNewBid(auction._id)")
+                    .form-group.input-group-sm
+                        label(for="bidderName") Character Name:
+                        input.form-control(id="bidderName" type="text" ng-model="newBids[auction._id].name")
+                    .form-group.input-group-sm
+                        label(for="bidderAmount") Amount:
+                        input.form-control(id="bidderAmount" type="text" ng-model="newBids[auction._id].amount")
+
+table.table.table-striped.table-hover
+    thead
+        tr.info
+            th Name
+            th Amount
+            th Date Placed
+    tbody
+        tr(ng-repeat="bid in auction.previousBids", ng-class="{warning: $first }")
+            td {{ bid.character }}
+            td {{ bid.amount }}
+            td {{ bid.datePlaced | date : 'medium' }}
+
+a.pull-right(ng-href="/", style="margin-bottom: 10px") Back to Auctions
