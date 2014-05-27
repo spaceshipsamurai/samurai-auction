@@ -11,8 +11,8 @@
                 button(type="button" data-dismiss="modal").btn.btn-danger Close
                 button(type="button").btn.btn-primary Confirm Bid
 
-div.row(ng-repeat="auction in auctions")
-    .col-md-6
+div.row
+    .col-md-6(ng-repeat="auction in auctions")
         .panel.panel-default
             .panel-heading
                 h3.panel-title.pull-left {{ auction.name }}
@@ -25,7 +25,7 @@ div.row(ng-repeat="auction in auctions")
                     div.col-md-9
                         | Type: {{ auction.type }} </br>
                         | Current Bidder: {{ auction.currentBid.character }} <br/>
-                        | Current Amount: {{ auction.currentBid.amount }}
+                        | Current Amount: {{ auction.currentBid.amount | number:2 }} ISK
                         form(role="form" style="margin-top: 10px;" ng-show="hasNewBid(auction._id)")
                             .form-group.input-group-sm
                                 label(for="bidderName") Character Name:
